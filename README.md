@@ -80,7 +80,7 @@ The `/distrib` endpoint response object should look as follows:
     "description": "A super STAC API server that implements the STAC API specification",
     "version": "1.0.0",
     "license": "Apache-2.0"
-  }
+  },
   "links": [
     {
       "rel": "root",
