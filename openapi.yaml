@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: STAC API - Distribution
+  version: '1.0.0'
+  description: >-
+    This is an OpenAPI definition of the SpatioTemporal Asset Catalog API - Distribution
+    specification.
+  contact:
+    name: STAC Specification
+    url: 'http://stacspec.org'
+  license:
+    name: Apache License 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+tags:
+  - name: Distribution
+    description: |-
+      All endpoints related to STAC API - Distribution
+paths:
+  '/distrib':
+    get:
+      tags:
+        - Distribution
+      summary: the Distribution page
+      description: |-
+        A body of metadata that describes the distribution of the software serving the STAC API.
+      operationId: getDistribution
+      responses:
+        '200':
+          $ref: '#/components/responses/Distribution'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    distribution:
+      type: object
+      required:
+        - links
+        - distribution
+      properties:
+        links:
+          $ref: 'https://api.stacspec.org/v1.0.0/ogcapi-features/openapi.yaml#/components/schemas/links'
+        distribution:
+          type: object
+          properties:
+            id:
+              type: string
+            version:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            license:
+              type: string
+  responses:
+    Distribution:
+      description: |-
+        A body of metadata that describes the distribution of the software serving the STAC API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/distribution'
+    ServerError:
+      description: |-
+        A server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: 'https://api.stacspec.org/v1.0.0-rc.2/ogcapi-features/openapi.yaml#/components/schemas/exception'
