@@ -74,11 +74,13 @@ The `/distrib` endpoint response object should look as follows:
 
 ```json
 {
-  "id": "super-stac-api-server-1.0",
-  "name": "Super STAC API Server 1.0",
-  "description": "A super STAC API server that implements the STAC API specification",
-  "version": "1.0.0",
-  "license": "Apache-2.0",
+  "distribution": {
+    "id": "super-stac-api-server-1.0",
+    "name": "Super STAC API Server 1.0",
+    "description": "A super STAC API server that implements the STAC API specification",
+    "version": "1.0.0",
+    "license": "Apache-2.0"
+  }
   "links": [
     {
       "rel": "root",
