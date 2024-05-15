@@ -66,4 +66,4 @@ components:
       content:
         application/json:
           schema:
-            $ref: 'https://api.stacspec.org/v1.0.0-rc.2/ogcapi-features/openapi.yaml#/components/schemas/exception'
+            $ref: 'https://api.stacspec.org/v1.0.0/ogcapi-features/openapi.yaml#/components/schemas/exception'

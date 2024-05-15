@@ -1,6 +1,5 @@
 # STAC API - Distribution Extension Specification
 
-
 - [STAC API - Distribution Extension Specification](#stac-api---distribution-extension-specification)
   - [Overview](#overview)
   - [Link Relations](#link-relations)
