@@ -12,4 +12,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Older versions
 
-[Unreleased]: <https://github.com/emmanuelmathot/distribution/compare/v1.0.0..main>
+[Unreleased]: <https://github.com/stac-api-extensions/distribution/compare/v1.0.0..main>
