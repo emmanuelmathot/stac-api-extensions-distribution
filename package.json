@@ -8,9 +8,7 @@
         "serve": "redoc-cli serve openapi.yaml --watch --options.expandResponses \"200,201,202,203,204\" --options.pathInMiddlePanel true",
         "check": "npm run check-markdown && npm run check-openapi",
         "check-markdown": "remark . --frail",
-        "check-openapi": "spectral lint openapi.yaml --ruleset .circleci/.spectral.yml",
-        "build-openapi": ".circleci/build-openapi.sh",
-        "publish-openapi": "node .circleci/publish.js"
+        "check-openapi": "spectral lint openapi.yaml --ruleset .github/.spectral.yml"
     },
     "dependencies": {
         "@redocly/openapi-cli": "^1.0.0-beta.94",
