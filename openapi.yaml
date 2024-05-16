@@ -1,28 +1,28 @@
 openapi: 3.0.3
 info:
   title: STAC API - Distribution
-  version: '1.0.0'
+  version: 1.0.0
   description: >-
-    This is an OpenAPI definition of the SpatioTemporal Asset Catalog API - Distribution
-    specification.
+    This is an OpenAPI definition of the SpatioTemporal Asset Catalog API -
+    Distribution specification.
   contact:
     name: STAC Specification
-    url: 'http://stacspec.org'
+    url: http://stacspec.org
   license:
     name: Apache License 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+    url: http://www.apache.org/licenses/LICENSE-2.0
 tags:
   - name: Distribution
-    description: |-
-      All endpoints related to STAC API - Distribution
+    description: All endpoints related to STAC API - Distribution
 paths:
-  '/distrib':
+  /distrib:
     get:
       tags:
         - Distribution
       summary: the Distribution page
-      description: |-
-        A body of metadata that describes the distribution of the software serving the STAC API.
+      description: >-
+        A body of metadata that describes the distribution of the software
+        serving the STAC API.
       operationId: getDistribution
       responses:
         '200':
@@ -38,7 +38,7 @@ components:
         - distribution
       properties:
         links:
-          $ref: 'https://api.stacspec.org/v1.0.0/ogcapi-features/openapi.yaml#/components/schemas/links'
+          $ref: '#/components/schemas/links'
         distribution:
           type: object
           properties:
@@ -52,18 +52,86 @@ components:
               type: string
             license:
               type: string
+    link:
+      title: Link
+      type: object
+      required:
+        - href
+        - rel
+      properties:
+        href:
+          type: string
+          format: uri
+          description: The location of the resource
+        rel:
+          type: string
+          description: Relation type of the link
+        type:
+          type: string
+          description: The media type of the resource
+        title:
+          type: string
+          description: Title of the resource
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+          default: GET
+          description: Specifies the HTTP method that the resource expects
+        headers:
+          type: object
+          description: Object key values pairs they map to headers
+          example:
+            Accept: application/json
+        body:
+          type: object
+          description: >-
+            For POST requests, the resource can specify the HTTP body as a JSON
+            object.
+        merge:
+          type: boolean
+          default: false
+          description: |-
+            This is only valid when the server is responding to POST request.
+
+            If merge is true, the client is expected to merge the body value
+            into the current request body before following the link.
+            This avoids passing large post bodies back and forth when following
+            links, particularly for navigating pages through the `POST /search`
+            endpoint.
+
+            NOTE: To support form encoding it is expected that a client be able
+            to merge in the key value pairs specified as JSON
+            `{"next": "token"}` will become `&next=token`.
+    links:
+      type: array
+      items:
+        $ref: '#/components/schemas/link'
+    exception:
+      type: object
+      description: >-
+        Information about the exception: an error code plus an optional
+        description.
+      required:
+        - code
+      properties:
+        code:
+          type: string
+        description:
+          type: string
   responses:
     Distribution:
-      description: |-
-        A body of metadata that describes the distribution of the software serving the STAC API.
+      description: >-
+        A body of metadata that describes the distribution of the software
+        serving the STAC API.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/distribution'
     ServerError:
-      description: |-
-        A server error occurred.
+      description: A server error occurred.
       content:
         application/json:
           schema:
-            $ref: 'https://api.stacspec.org/v1.0.0/ogcapi-features/openapi.yaml#/components/schemas/exception'
+            $ref: '#/components/schemas/exception'
